@@ -1,0 +1,8 @@
+c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\bin\Debug\FileReadingDemo.exe.config
+c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\bin\Debug\FileReadingDemo.exe
+c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\bin\Debug\FileReadingDemo.pdb
+c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.csprojAssemblyReference.cache
+c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.csproj.ResolveComReference.cache
+c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.csproj.CoreCompileInputs.cache
+c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.exe
+c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.pdb
