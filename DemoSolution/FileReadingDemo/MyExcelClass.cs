@@ -9,7 +9,9 @@ using Excel=Microsoft.Office.Interop.Excel;
 namespace FileReadingDemo
 {
     /// <summary>
-    /// Class with custom methods for interaction with the .xlsx file
+    /// Class with custom methods for interaction with the .xlsx files.
+    /// This class provides ways to single read and write cells an ranges, find values and the 
+    /// basic Open, Create, Save, SaveAs and Close actions.
     /// </summary>
     public class MyExcelClass
     {
@@ -31,7 +33,7 @@ namespace FileReadingDemo
         /// <summary>
         /// Create a new workbook in the specified path
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">Path of the new workbook to be created</param>
         public static void CreateNewWorkbook(string path)
         {
             Excel.Application newExcelApp = new Excel.Application();
@@ -59,7 +61,7 @@ namespace FileReadingDemo
         /// <summary>
         /// Save the current workbook in a new specified location
         /// </summary>
-        /// <param name="newpath"></param>
+        /// <param name="newpath">Path of the new file to be crated with the current updates</param>
         public void SaveAs(string newpath)
         {
             workbook.SaveAs(newpath);
@@ -107,8 +109,9 @@ namespace FileReadingDemo
         /// Find all the places in the column in wich the value is found and returns them as a
         /// list of int[],if row is not especified it will start from 1
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="column"></param>
+        /// <param name="value">Value to search in the specified column</param>
+        /// <param name="column">Column selected for searching</param>
+        /// <param name="row">Row from wich strart to search, if none specified default is 1</param>
         /// <returns></returns>
         public List<int[]> FindValueInColumn(string value, int column,int row=1)
         {
@@ -138,27 +141,38 @@ namespace FileReadingDemo
         }
 
         /// <summary>
-        /// Search in a specific range of cells in the current workshet, and return the values as strings
+        /// Search in a specific range of cells in the current workshet, and return the values as strings.
+        /// If range dimentions are not valid, returns an eror string as result
         /// </summary>
-        /// <param name="initialRow"></param>
-        /// <param name="initialColumn"></param>
-        /// <param name="finalRow"></param>
-        /// <param name="finalColumn"></param>
+        /// <param name="initialRow">Initial row from wich start to read</param>
+        /// <param name="initialColumn">Initial column from wich start to read</param>
+        /// <param name="finalRow">Final row of the search</param>
+        /// <param name="finalColumn">Final column of the search</param>
         /// <returns></returns>
         public string[,] ReadRange(int initialRow, int initialColumn,int finalRow,int finalColumn)
         {
-            Excel.Range range = worksheet.Range[worksheet.Cells[initialRow,initialColumn],worksheet.Cells[finalRow,finalColumn]];
-            object[,] rangeValues = range.Value2;
-            string[,] returnValues = new string[finalRow-initialRow+1,finalColumn-initialColumn+1];
-            for (int row=0; row < rangeValues.GetLength(0);row++)
-            { 
-                for (int column = 0; column < rangeValues.GetLength(1); column++)
+            if (finalRow>=initialRow&&finalColumn>=initialColumn)
+            {
+                Excel.Range range = worksheet.Range[worksheet.Cells[initialRow, initialColumn], worksheet.Cells[finalRow, finalColumn]];
+                object[,] rangeValues = range.Value2;
+                string[,] returnValues = new string[finalRow - initialRow + 1, finalColumn - initialColumn + 1];
+                for (int row = 0; row < rangeValues.GetLength(0); row++)
                 {
-                    //Careful is needed here, Excel ranges always start from 1
-                    returnValues[row, column] = rangeValues[row+1, column+1]!=null?rangeValues[row + 1, column + 1].ToString():string.Empty;
+                    for (int column = 0; column < rangeValues.GetLength(1); column++)
+                    {
+                        //Careful is needed here, Excel ranges always start from 1
+                        returnValues[row, column] = rangeValues[row + 1, column + 1] != null ? rangeValues[row + 1, column + 1].ToString() : string.Empty;
+                    }
                 }
+                return returnValues;
             }
-            return returnValues;
+            else
+            {
+                string[,] errorResult=new string[1,1];
+                errorResult[1, 1] = "Range dimentions not valid";
+                return errorResult;
+            }
+           
              
         }
 
@@ -179,14 +193,29 @@ namespace FileReadingDemo
             worksheet.Cells[row,column]=value;
         }
 
+        /// <summary>
+        /// Writes an array of strings to the specified range in the worksheet
+        /// </summary>
+        /// <param name="initialRow">Initial row of the range we want to write to</param>
+        /// <param name="initialColumn">Initial column of the range we want to write to</param>
+        /// <param name="finalRow">Final row of the range we want to write to</param>
+        /// <param name="finalColumn">Final column of the range we want to write to</param>
+        /// <param name="range">Values that we want to write to the defined range</param>
         public void WriteToRange(int initialRow,int initialColumn,int finalRow,int finalColumn, string[,]range)
         {
-            int rows = finalRow - initialRow + 1;
-            int columns = finalColumn - initialColumn + 1;
-            if (range.GetLength(0)==rows&&range.GetLength(1)==columns)
+            if (finalRow>=initialRow&&finalColumn>=initialColumn)
             {
-                Excel.Range rangeToWrite = worksheet.Range[worksheet.Cells[initialRow, initialColumn], worksheet.Cells[finalRow, finalColumn]];
-                rangeToWrite.Value2=range;
+                int rows = finalRow - initialRow + 1;
+                int columns = finalColumn - initialColumn + 1;
+                if (range.GetLength(0) == rows && range.GetLength(1) == columns)
+                {
+                    Excel.Range rangeToWrite = worksheet.Range[worksheet.Cells[initialRow, initialColumn], worksheet.Cells[finalRow, finalColumn]];
+                    rangeToWrite.Value2 = range;
+                }
+            }
+            else
+            {
+                throw new Exception("The dimentions of the target range are not valid,check initial and final values");
             }
            
         }

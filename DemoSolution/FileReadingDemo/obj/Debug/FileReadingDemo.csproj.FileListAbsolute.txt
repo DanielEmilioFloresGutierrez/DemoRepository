@@ -6,3 +6,11 @@ c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileR
 c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.csproj.CoreCompileInputs.cache
 c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.exe
 c:\users\daniel.flores\source\repos\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.pdb
+C:\Users\daniel.flores\Documents\Copia del repositorio remoto\DemoRepository\DemoSolution\FileReadingDemo\bin\Debug\FileReadingDemo.exe.config
+C:\Users\daniel.flores\Documents\Copia del repositorio remoto\DemoRepository\DemoSolution\FileReadingDemo\bin\Debug\FileReadingDemo.exe
+C:\Users\daniel.flores\Documents\Copia del repositorio remoto\DemoRepository\DemoSolution\FileReadingDemo\bin\Debug\FileReadingDemo.pdb
+C:\Users\daniel.flores\Documents\Copia del repositorio remoto\DemoRepository\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.csprojAssemblyReference.cache
+C:\Users\daniel.flores\Documents\Copia del repositorio remoto\DemoRepository\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.csproj.ResolveComReference.cache
+C:\Users\daniel.flores\Documents\Copia del repositorio remoto\DemoRepository\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.csproj.CoreCompileInputs.cache
+C:\Users\daniel.flores\Documents\Copia del repositorio remoto\DemoRepository\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.exe
+C:\Users\daniel.flores\Documents\Copia del repositorio remoto\DemoRepository\DemoSolution\FileReadingDemo\obj\Debug\FileReadingDemo.pdb
